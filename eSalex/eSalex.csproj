@@ -161,6 +161,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Emp\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Emp\EmpAreaRegistration.cs" />
+    <Compile Include="Controllers\LayoutTestController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -221,6 +222,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Index2.cshtml" />
     <Content Include="Views\Order\InsertOrder.cshtml" />
+    <Content Include="Views\_LayoutPage.cshtml" />
+    <Content Include="Views\LayoutTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
