@@ -12,6 +12,13 @@
     <title>InsertOrder</title>
 </head>
 <body>
+    @ViewBag.Desc1
+    <br />
+    @ViewData["Desc2"]
+    <br />
+    @TempData["Desc3"]
+
+
     @using (Html.BeginForm()) 
     {
         @Html.AntiForgeryToken()

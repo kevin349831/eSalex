@@ -16,9 +16,7 @@ namespace eSalex.Controllers
             //var order = orderService.GetOrderById("111");
             //ViewBag.CustId = order.CustId;
             //ViewBag.CustName = order.CustName;
-            ViewBag.Desc1 = "I'm ViewBag";
-            ViewData["Desc2"] = "I'm ViewData";
-            TempData["Desc3"] = "I'm TempData";
+            
             return View();
         }
 
@@ -45,9 +43,10 @@ namespace eSalex.Controllers
         [HttpPost()]
         public ActionResult InsertOrder(Models.Order order)
         {
-            Models.OrderService orderService = new Models.OrderService();
-            orderService.InsertOrder(order);
-            return View("Index");
+            ViewBag.Desc1 = "I'm ViewBag";
+            ViewData["Desc2"] = "I'm ViewData";
+            TempData["Desc3"] = "I'm TempData";
+            return RedirectToAction("index");
         }
         [HttpGet()]
         public JsonResult TestJson()
