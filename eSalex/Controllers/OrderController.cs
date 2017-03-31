@@ -32,6 +32,8 @@ namespace eSalex.Controllers
         /// <returns></returns>
         public ActionResult InsertOrder()
         {
+            Models.Order order = new Models.Order();
+            order.CustName = "RR科技";
             return View();
 
         }
