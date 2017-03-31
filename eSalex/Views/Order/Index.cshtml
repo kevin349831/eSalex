@@ -12,11 +12,12 @@
 </head>
 <body>
     <div> 
-        @ViewBag.Desc1
-        <br />
-        @ViewData["Desc2"]
-        <br />
-        @TempData["Desc3"]
+        @ViewBag.test
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    var msg = '@ViewBag.test';
+    alert(msg)
+</script>

@@ -16,7 +16,7 @@ namespace eSalex.Controllers
             //var order = orderService.GetOrderById("111");
             //ViewBag.CustId = order.CustId;
             //ViewBag.CustName = order.CustName;
-            
+            ViewBag.test = "test";
             return View();
         }
 
