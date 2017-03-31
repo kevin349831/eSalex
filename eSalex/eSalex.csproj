@@ -224,6 +224,7 @@
     <Content Include="Views\Order\InsertOrder.cshtml" />
     <Content Include="Views\_LayoutPage.cshtml" />
     <Content Include="Views\LayoutTest\Index.cshtml" />
+    <Content Include="Views\Shared\_SysDatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
