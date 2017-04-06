@@ -12,9 +12,10 @@ namespace eSalex.Controllers
         // GET: /Order/
         public ActionResult Index()
         {
-            // Models.OrderService orderService = new Models.OrderService();
-            //ViewBag.Data = orderService.GetOrders();
-            List<SelectListItem> custData = new List<SelectListItem>();
+            Models.OrderService orderService = new Models.OrderService();
+            ViewBag.Data = orderService.GetOrders();
+            return View();
+            /*List<SelectListItem> custData = new List<SelectListItem>();
 
             custData.Add(new SelectListItem()
             {
@@ -30,7 +31,7 @@ namespace eSalex.Controllers
 
             ViewBag.custData = custData;
 
-            return View();
+            return View();*/
         }
 
         public ActionResult Index2(String id)
