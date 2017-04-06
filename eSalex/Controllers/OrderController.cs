@@ -12,8 +12,24 @@ namespace eSalex.Controllers
         // GET: /Order/
         public ActionResult Index()
         {
-            Models.OrderService orderService = new Models.OrderService();
-            ViewBag.Data = orderService.GetOrders();
+            // Models.OrderService orderService = new Models.OrderService();
+            //ViewBag.Data = orderService.GetOrders();
+            List<SelectListItem> custData = new List<SelectListItem>();
+
+            custData.Add(new SelectListItem()
+            {
+                Text = "HHHH",
+                Value = "1"
+            });
+
+            custData.Add(new SelectListItem()
+            {
+                Text = "YYYY",
+                Value = "2"
+            });
+
+            ViewBag.custData = custData;
+
             return View();
         }
 
