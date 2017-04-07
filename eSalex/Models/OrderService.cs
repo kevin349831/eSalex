@@ -11,6 +11,15 @@ namespace eSalex.Models
     public class OrderService
     {
         /// <summary>
+        /// 取得DB連線字串
+        /// </summary>
+        /// <returns></returns>
+        public string GetDBConnectionString()
+        {
+            return
+                System.Configuration.ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString.ToString();
+        }
+        /// <summary>
         /// 新增訂單
         /// </summary>
         public void InsertOrder(Models.Order order) { 
