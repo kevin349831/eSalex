@@ -70,7 +70,7 @@
                         <td>@item.CustName</td>
                         <td>@item.Orderdate</td>
                         <td>@item.ShippedDate</td>
-                        <td>@Html.ActionLink("修改", "Update", new { id = item.OrderId })</td>
+                        <td>@Html.ActionLink("修改", "UpdateOrder", new { id = item.OrderId })</td>
                         <td>
                             <a class="btnDelete" href="#">刪除</a>
                             <input class="hidOrderId" type="hidden" value='@item.OrderId' />
