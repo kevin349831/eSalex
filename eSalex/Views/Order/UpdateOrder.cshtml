@@ -6,3 +6,119 @@
 }
 
 <h2>修改訂單</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.CustomerID)
+            </td>
+            <td colspan="3">
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.EmployeeID)</td>
+            <td>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.Orderdate)</td>
+            <td>
+
+            </td>
+            <td>@Html.LabelFor(model => model.RequireDdate)</td>
+            <td>
+
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShippedDate)</td>
+            <td>
+
+            </td>
+            <td>@Html.LabelFor(model => model.ShipperId)</td>
+            <td>
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipperName)</td>
+            <td>
+
+            </td>
+            <td>@Html.LabelFor(model => model.Freight)</td>
+            <td>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipCountry)</td>
+            <td>
+
+            </td>
+            <td>@Html.LabelFor(model => model.ShipCity)</td>
+            <td>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipRegion)</td>
+            <td>
+
+            </td>
+            <td>@Html.LabelFor(model => model.ShipPostalCode)</td>
+            <td>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipAddress)</td>
+            <td>
+
+            </td>
+            <td>@Html.LabelFor(model => model.ShipName)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="存檔" />
+                @Html.ActionLink("回前一頁", "Index")
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    <a id="addNewDetial" href="#">新增一筆</a>
+    <table class="table table-bordered">
+        <tr>
+            <td>商品</td>
+            <td>單價</td>
+            <td>數量</td>
+            <td>小計</td>
+            <td></td>
+        </tr>
+
+    </table>
+
+}
