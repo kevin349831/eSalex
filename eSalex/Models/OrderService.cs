@@ -116,7 +116,7 @@ namespace WebApplication2.Models
 					INNER JOIN Sales.Customers As B ON A.CustomerID=B.CustomerID
 					INNER JOIN HR.Employees As C On A.EmployeeID=C.EmployeeID
 					inner JOIN Sales.Shippers As D ON A.shipperid=D.shipperid
-					Where (B.Companyname Like '%' + @CustName + '%' Or @CustName='') And 
+					Where (A.OrderId Like '%' + @OrderId + '%' Or @OrderId='') And (B.Companyname Like '%' + @CustName + '%' Or @CustName='') And 
 						  (A.Orderdate=@Orderdate Or @Orderdate='') ";
 
 
