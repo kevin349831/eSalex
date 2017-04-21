@@ -1,20 +1,2 @@
-﻿<div>
-    目前時間:@System.DateTime.Now
-</div>
-<div>
-    <label>縣市</label>
-    <input type="text" />
-</div>
-<div>
-    <label>區</label>
-    <input type="text" />
-</div>
-<div>
-    <label>地址</label>
-    <input type="text" />
-</div>
-<script type="text/javascript">
-    alert('aa');
-</script>
-@{ Html.RenderPartial("_SysDatePartial");}
-@{ Html.RenderAction("","");}
+﻿<label>目前時間</label>
+<label>@System.DateTime.Now</label>

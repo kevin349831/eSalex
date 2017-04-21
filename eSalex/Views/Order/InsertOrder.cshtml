@@ -1,146 +1,175 @@
-﻿@model eSalex.Models.Order
+﻿@model WebApplication2.Models.Order
 
 @{
-    Layout = null;
+    ViewBag.Title = "InsertOrder";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>新增訂單</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>InsertOrder</title>
-</head>
-<body>
-    @ViewBag.Desc1
-    <br />
-    @ViewData["Desc2"]
-    <br />
-    @TempData["Desc3"]
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.CustomerID)
+            </td>
+            <td colspan="3">
+                @Html.DropDownListFor(model => model.CustomerID, (List<SelectListItem>)ViewBag.CustCodeData)
+                @Html.ValidationMessageFor(model => model.CustomerID)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.EmployeeID)</td>
+            <td>
+                @Html.DropDownListFor(model => model.EmployeeID, (List<SelectListItem>)ViewBag.EmpCodeData)
+                @Html.ValidationMessageFor(model => model.EmployeeID)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.Orderdate)</td>
+            <td>
+                @Html.TextBoxFor(model => model.Orderdate, new { @type = "date" })
+                @Html.ValidationMessageFor(model => model.Orderdate)
+            </td>
+            <td>@Html.LabelFor(model => model.RequireDdate)</td>
+            <td>
+                @Html.TextBoxFor(model => model.RequireDdate, new { @type = "date" })
+                @Html.ValidationMessageFor(model => model.RequireDdate)
+            </td>
+        </tr>
 
 
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Order</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-            <div class="form-group">
-                @Html.LabelFor(model => model.CustId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CustId)
-                    @Html.ValidationMessageFor(model => model.CustId)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.CustName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CustName)
-                    @Html.ValidationMessageFor(model => model.CustName)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.EmpId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.EmpId)
-                    @Html.ValidationMessageFor(model => model.EmpId)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.EmpName)
-                    @Html.ValidationMessageFor(model => model.EmpName)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Orderdate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Orderdate)
-                    @Html.ValidationMessageFor(model => model.Orderdate)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShippedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShippedDate)
-                    @Html.ValidationMessageFor(model => model.ShippedDate)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipperId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipperId)
-                    @Html.ValidationMessageFor(model => model.ShipperId)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipName)
-                    @Html.ValidationMessageFor(model => model.ShipName)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipAddress)
-                    @Html.ValidationMessageFor(model => model.ShipAddress)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipCity, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipCity)
-                    @Html.ValidationMessageFor(model => model.ShipCity)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipRegion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipRegion)
-                    @Html.ValidationMessageFor(model => model.ShipRegion)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipPostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipPostalCode)
-                    @Html.ValidationMessageFor(model => model.ShipPostalCode)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipCountry, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShipCountry)
-                    @Html.ValidationMessageFor(model => model.ShipCountry)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-</body>
-</html>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShippedDate)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShippedDate, new { @type = "date" })
+                @Html.ValidationMessageFor(model => model.ShippedDate)
+            </td>
+            <td>@Html.LabelFor(model => model.ShipperId)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipperId)
+                @Html.ValidationMessageFor(model => model.ShipperId)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipperName)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipperName)
+                @Html.ValidationMessageFor(model => model.ShipperName)
+            </td>
+            <td>@Html.LabelFor(model => model.Freight)</td>
+            <td>
+                @Html.TextBoxFor(model => model.Freight)
+                @Html.ValidationMessageFor(model => model.Freight)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipCountry)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipCountry)
+                @Html.ValidationMessageFor(model => model.ShipCountry)
+            </td>
+            <td>@Html.LabelFor(model => model.ShipCity)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipCity)
+                @Html.ValidationMessageFor(model => model.ShipCity)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipRegion)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipRegion)
+                @Html.ValidationMessageFor(model => model.ShipRegion)
+            </td>
+            <td>@Html.LabelFor(model => model.ShipPostalCode)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipPostalCode)
+                @Html.ValidationMessageFor(model => model.ShipPostalCode)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ShipAddress)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipAddress)
+                @Html.ValidationMessageFor(model => model.ShipAddress)
+            </td>
+            <td>@Html.LabelFor(model => model.ShipName)</td>
+            <td>
+                @Html.TextBoxFor(model => model.ShipName)
+                @Html.ValidationMessageFor(model => model.ShipName)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="存檔" />
+                @Html.ActionLink("回前一頁", "Index")
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <a id="addNewDetial" href="#">新增一筆</a>
+    <table class="table table-bordered">
+        <tr>
+            <td>商品</td>
+            <td>單價</td>
+            <td>數量</td>
+            <td>小計</td>
+            <td></td>
+        </tr>
+        <tbody id="tbContent">
+
+            @for (int i = 0; i < Model.OrderDetails.Count; i++)
+            {
+                <tr>
+                    <td>@Html.DropDownListFor(m => Model.OrderDetails[i].ProductId, (List<SelectListItem>)ViewBag.ProductCodeData, new { @class = "ProductId" })</td>
+                    <td>@Html.TextBoxFor(m => Model.OrderDetails[i].UnitPrice, new { @class = "UnitPrice" })</td>
+                    <td>@Html.TextBoxFor(m => Model.OrderDetails[i].Qty, new { @class = "Qty" })</td>
+                    <td></td>
+                    <td><button type="button" class="btnRemove">取消</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+@section scripts{
+    <script type="text/javascript">
+        //明細資料範本
+        var trtemplate = $('#tbContent tr').eq(0).html();
+
+        //新增一列名資料
+        $("#addNewDetial").click(function (e) {
+            $('#tbContent').append('<tr>' + trtemplate + '</tr>');
+        });
+
+        //移除TR
+        $('#tbContent').on('click', '.btnRemove', function () {
+            if ($('#tbContent tr').length > 1)
+                $(this).closest('tr').remove();
+        });
+
+        //表單送出前置換element name 讓Action 可以讀到OrderDetials
+        $('form').submit(function () {
+            for (var i = 0 ; i < $('#tbContent tr').length; i++) {
+                $('.ProductId').eq(i).attr('name', 'OrderDetails[' + i + '].ProductId');
+                $('.Qty').eq(i).attr('name', 'OrderDetails[' + i + '].Qty');
+                $('.UnitPrice').eq(i).attr('name', 'OrderDetails[' + i + '].UnitPrice');
+            }
+        });
+    </script>
+}
