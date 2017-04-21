@@ -4,75 +4,119 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace eSalex.Controllers
+namespace WebApplication2.Controllers
 {
     public class OrderController : Controller
     {
-        //
-        // GET: /Order/
-        public ActionResult Index()
-        {
-            Models.OrderService orderService = new Models.OrderService();
-            ViewBag.Data = orderService.GetOrders();
-            return View();
-            /*List<SelectListItem> custData = new List<SelectListItem>();
 
-            custData.Add(new SelectListItem()
-            {
-                Text = "HHHH",
-                Value = "1"
-            });
 
-            custData.Add(new SelectListItem()
-            {
-                Text = "YYYY",
-                Value = "2"
-            });
 
-            ViewBag.custData = custData;
 
-            return View();*/
-        }
 
-        public ActionResult Index2(String id)
-        {
-            ViewBag.id = id;
-            return View();
-
-        }
+        Models.CodeService codeService = new Models.CodeService();
         /// <summary>
-        /// 新增訂單的畫面
+        /// 訂單管理首頁
         /// </summary>
         /// <returns></returns>
+        public ActionResult Index()
+        {
+            ViewBag.EmpCodeData = this.codeService.GetEmp();
+            return View();
+        }
+
+        /// <summary>
+        /// 取得訂單查詢結果
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <returns></returns>
+        [HttpPost()]
+        public ActionResult Index(Models.OrderSearchArg arg)
+        {
+            ViewBag.EmpCodeData = this.codeService.GetEmp();
+            Models.OrderService orderService = new Models.OrderService();
+            ViewBag.SearchResult = orderService.GetOrderByCondtioin(arg);
+            return View("Index");
+        }
+
+
+        /// <summary>
+        /// 新增訂單畫面
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet()]
         public ActionResult InsertOrder()
         {
-            Models.Order order = new Models.Order();
-            order.CustName = "RR科技";
-            return View();
-
+            ViewBag.CustCodeData = this.codeService.GetCustomer();
+            ViewBag.EmpCodeData = this.codeService.GetEmp();
+            ViewBag.ProductCodeData = this.codeService.GetProduct();
+            return View(new Models.Order());
         }
+
         /// <summary>
-        /// 新增訂單存檔的ACTION
+        /// 新增訂單
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
         [HttpPost()]
         public ActionResult InsertOrder(Models.Order order)
         {
-            ViewBag.Desc1 = "I'm ViewBag";
-            ViewData["Desc2"] = "I'm ViewData";
-            TempData["Desc3"] = "I'm TempData";
-            return RedirectToAction("index");
-        }
-        [HttpGet()]
-        public JsonResult TestJson()
-        {
-            ///var result = new Models.Order();
-            ///result.CustId = "HAOYU";
-            ///result.CustName = "LALLA";
+            if (ModelState.IsValid)
+            {
 
-            var result = new Models.Order() { CustId = "SSS", CustName = "BBB" };
-            return this.Json(result, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
+
+            }
+            return View(order);
+            //return View();
         }
-	}
+
+        /// <summary>
+        /// 更新訂單畫面
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet()]
+        public ActionResult UpdateOrder()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 更新訂單
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult UpdateOrder(Models.Order order)
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 刪除訂單
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        [HttpPost()]
+        public JsonResult DeleteOrder(string orderId)
+        {
+            try
+            {
+                Models.OrderService orderService = new Models.OrderService();
+                orderService.DeleteOrderById(orderId);
+                return this.Json(true);
+            }
+            catch (Exception)
+            {
+                return this.Json(false);
+            }
+        }
+
+        /// <summary>
+        /// 取得系統時間
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetSysDate()
+        {
+            return PartialView("_SysDatePartial");
+        }
+    }
 }
