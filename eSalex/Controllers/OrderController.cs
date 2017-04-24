@@ -75,9 +75,9 @@ namespace WebApplication2.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet()]
-        public ActionResult UpdateOrder()
+        public ActionResult UpdateOrder(string orderId)
         {
-
+            ViewBag.Test = orderId;
             return View(new Models.Order());
         }
 
