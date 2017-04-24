@@ -75,9 +75,11 @@ namespace WebApplication2.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet()]
-        public ActionResult UpdateOrder(string orderId)
+        public ActionResult UpdateOrder(string id)
         {
-            ViewBag.Test = orderId;
+            ViewBag.test = id;
+            Models.OrderService os = new Models.OrderService();
+            ViewBag.value = os.GetOrderById(id);
             return View(new Models.Order());
         }
 
