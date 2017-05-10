@@ -1,3 +1,3 @@
 # eSalex
 
-Write MVC web with ASP.NET .
+Write CRUD with ASP.NET MVC.
